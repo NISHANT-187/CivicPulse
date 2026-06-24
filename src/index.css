@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #D6C3A5; /* Champagne Gold */
+  --color-secondary: #8B8175; /* Warm Stone */
+  --color-tertiary: #7C9A7A; /* Success */
+  --color-warning: #B78C52; /* Warning */
+  --color-danger: #A86666; /* Danger */
+  
+  --bg-dark: #0B0B0C;
+  --bg-card: #141416;
+  --bg-surface: #1A1A1D;
+  --border-brutal: rgba(255, 255, 255, 0.06);
+  --text-primary: #F5F5F7;
+  --text-muted: #A1A1AA;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+}
+
+@layer components {
+  /* Apple-inspired CTA Buttons */
+  .btn-primary {
+    @apply px-4 py-2 bg-[#D6C3A5] text-[#0B0B0C] font-medium text-sm rounded-md transition-all duration-200 hover:bg-[#E5D7BF] active:scale-[0.98] cursor-pointer shadow-sm;
+  }
+  
+  .btn-secondary {
+    @apply px-4 py-2 bg-transparent text-[#F5F5F7] border border-[rgba(255,255,255,0.08)] font-medium text-sm rounded-md transition-all duration-200 hover:bg-[rgba(255,255,255,0.04)] active:scale-[0.98] cursor-pointer;
+  }
+
+  .btn-danger {
+    @apply px-4 py-2 bg-[#A86666] text-[#F5F5F7] font-medium text-sm rounded-md transition-all duration-200 hover:bg-[#B97777] active:scale-[0.98] cursor-pointer;
+  }
+
+  /* Backwards compatibility bindings so they compile */
+  .neo-brutal-btn-lime { @apply btn-primary; }
+  .neo-brutal-btn-purple { @apply btn-secondary; }
+  .neo-brutal-btn-danger { @apply btn-danger; }
+  .neo-brutal-btn-gray { @apply btn-secondary; }
+
+  /* Premium Glass Cards */
+  .glass-card {
+    background: rgba(20, 20, 22, 0.6);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.2s, background-color 0.2s;
+  }
+
+  .glass-card-brutal {
+    @apply glass-card;
+  }
+
+  .glass-card:hover {
+    border-color: rgba(214, 195, 165, 0.15);
+  }
+
+  .glass-panel {
+    background: rgba(20, 20, 22, 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .glass-input {
+    @apply bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.06)] rounded-md px-3.5 py-2 text-[#F5F5F7] placeholder-[#71717A] focus:outline-none focus:border-[#D6C3A5] focus:bg-[rgba(255,255,255,0.04)] transition-all duration-200 text-sm;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0B0C;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Shimmer Loading Skeleton */
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #141416 25%, #1A1A1D 50%, #141416 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Page entrance container transition */
+.page-entrance {
+  @apply animate-fade-in-up;
+}
+
+/* Radar scan overlays simulation */
+.radar-scan-line {
+  display: none;
+}
+
+/* Custom maps overlay overrides */
+.leaflet-container {
+  display: none !important;
+}
+
+.google-map-premium {
+  width: 100%;
+  height: 100%;
+  background-color: #0b0b0c;
+  border-radius: 12px;
+}
